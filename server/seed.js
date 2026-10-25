@@ -1,0 +1,12 @@
+import "dotenv/config"; import mongoose from "mongoose"; import bcrypt from "bcryptjs";
+import { User, Policy, TravelRequest } from "./models/index.js"; import { defaultPolicies } from "./defaultPolicies.js";
+await mongoose.connect(process.env.MONGO_URI);
+await Promise.all([User.deleteMany({}), Policy.deleteMany({}), TravelRequest.deleteMany({})]);
+const pw = await bcrypt.hash("demo123", 10);
+const mk = (name, email, role, department, managerId) => User.create({ name, email, role, department, managerId, password: pw });
+const mgr = await mk("Arjun Menon", "manager@company.com", "manager", "Engineering");
+await mk("Pritimeena TV", "employee@company.com", "employee", "Engineering", mgr._id);
+await mk("Kavya Rao", "finance@company.com", "finance", "Finance");
+await mk("Admin User", "admin@company.com", "admin", "Operations");
+await Policy.insertMany(defaultPolicies);
+console.log("Seeded. Demo password for all accounts: demo123"); process.exit();

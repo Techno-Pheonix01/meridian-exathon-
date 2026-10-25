@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meridian — Corporate Travel & Reimbursement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4EFE6;--paper:#FAF9F6;--tile:#EDE6D9;--tileh:#E3DACA;--ink:#172033;--mut:#5B6577;--line:#D9CFBD;--navy:#0B1F3A;--navy2:#163A5F;--sand:#E8DFD1;--link:#163A5F;--ok:#2F6B4F;--warn:#8A5A0B;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1626;--paper:#0F1E33;--tile:#12243B;--tileh:#183050;--ink:#F1ECE2;--mut:#A3AEBF;--line:#26405E;--link:#9DB7D5;--ok:#7FC3A0;--warn:#E3B567}}
+:root[data-theme="dark"]{--bg:#0A1626;--paper:#0F1E33;--tile:#12243B;--tileh:#183050;--ink:#F1ECE2;--mut:#A3AEBF;--line:#26405E;--link:#9DB7D5;--ok:#7FC3A0;--warn:#E3B567}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{margin:0;font-weight:300;line-height:1.15;letter-spacing:-.005em}a{color:inherit;text-decoration:none}.wrap{max-width:1312px;margin:0 auto;padding:0 32px}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:48px;min-width:220px;padding:15px 16px;background:var(--navy2);color:#fff;font-size:.95rem;border:1px solid var(--navy2)}
+.btn:hover{background:#0f2c4a}.btn.alt{background:transparent;border-color:#F4EFE6;color:#F4EFE6}.btn.alt:hover{background:rgba(244,239,230,.12)}
+.btn.sand{background:var(--sand);color:var(--navy);border-color:var(--sand)}.btn.sand:hover{background:#fff}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #6EA0D6;outline-offset:2px}
+.top{background:var(--navy);color:#B9C3D2;font-size:.78rem}.top .wrap{display:flex;justify-content:flex-end;gap:24px;height:32px;align-items:center}
+header{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;height:56px}.logo{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.12em;font-size:1.05rem;margin-right:36px}
+nav{display:flex;height:100%}nav a{display:flex;align-items:center;padding:0 16px;font-size:.9rem;color:var(--mut);border-bottom:3px solid transparent}nav a:hover{color:var(--ink);border-bottom-color:var(--navy2)}
+.sp{flex:1}.signup{height:100%;display:flex;align-items:center;padding:0 20px;font-size:.9rem;color:var(--ink)}.signup:hover{text-decoration:underline}.signin{height:100%;display:flex;align-items:center;padding:0 24px;background:var(--navy2);color:#fff;font-size:.9rem;margin-right:-32px}.signin:hover{background:#0f2c4a}
+.hero{background:var(--navy);color:#F4EFE6;position:relative;overflow:hidden}.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;min-height:520px;align-items:center;gap:40px}
+.hero h1{font-size:clamp(2.2rem,4.6vw,3.6rem);max-width:13em}.hero p{color:#B9C3D2;font-size:1.1rem;max-width:30em;margin:22px 0 36px;font-weight:300}.hero .cta{display:flex;gap:2px;flex-wrap:wrap}
+.hero svg{width:100%;height:auto;max-height:440px}
+.promo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line)}.promo a{background:var(--paper);padding:24px 32px 56px;position:relative;min-height:170px}
+.promo small,.eyebrow{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}.promo h3{font-size:1.35rem;max-width:14em}.promo a:hover{background:var(--tileh)}
+.arr{position:absolute;right:24px;bottom:20px;font-size:1.3rem;color:var(--link)}
+section{padding:80px 0}h2{font-size:clamp(1.7rem,3vw,2.4rem)}.lead{color:var(--mut);max-width:40em;margin:14px 0 0;font-weight:300;font-size:1.05rem}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:40px;border:1px solid var(--line)}
+.tile{background:var(--tile);padding:22px 22px 64px;position:relative;min-height:210px;transition:background .15s}.tile:hover{background:var(--tileh)}
+.tile h3{font-size:1.2rem;font-weight:400;margin-bottom:10px}.tile p{margin:0;font-size:.9rem;color:var(--mut)}.tile .arr{right:20px;bottom:18px}
+.feature{background:var(--sand);color:var(--navy)}.feature .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}.feature .eyebrow{color:#4A5668}.feature p{font-weight:300;margin:16px 0 28px;font-size:1.05rem;color:#2A3447}
+.checks{background:var(--paper);border:1px solid #CFC4AF}.checks div{display:flex;justify-content:space-between;gap:12px;padding:16px 20px;border-top:1px solid #E3DACA;font-size:.93rem;color:var(--navy)}.checks div:first-child{border-top:0}
+.checks span{font-size:.75rem;padding:2px 10px;background:#F6EBD3;color:#8A5A0B;white-space:nowrap}.checks span.g{background:#E7F0EA;color:#2F6B4F}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border-top:1px solid var(--line)}.steps li{list-style:none;padding:22px 22px 26px 0;border-bottom:1px solid var(--line)}
+.steps ol{display:contents;margin:0;padding:0}.steps b{font-size:1.9rem;font-weight:300;color:var(--link);display:block;margin-bottom:8px}.steps h4{font-weight:500;font-size:1rem;margin-bottom:4px}.steps p{margin:0;color:var(--mut);font-size:.88rem;padding-right:12px}
+.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}.roles>div{border-top:3px solid var(--navy2);background:var(--paper);padding:24px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.roles h3{font-size:1.3rem;font-weight:400;margin-bottom:12px}.roles ul{margin:0;padding:0;list-style:none}.roles li{font-size:.9rem;color:var(--mut);padding:7px 0;border-top:1px solid var(--line)}
+.trust{background:var(--paper);border-block:1px solid var(--line)}.trust .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:40px}.trust h3{font-size:1.25rem;font-weight:400;margin-bottom:10px}.trust p{margin:0;color:var(--mut);font-size:.95rem}
+.cta2{background:var(--navy);color:#F4EFE6}.cta2 .wrap{display:flex;justify-content:space-between;gap:40px;align-items:center;flex-wrap:wrap}.cta2 h2{max-width:14em}.cta2 .cta{display:flex;gap:2px;flex-wrap:wrap}
+footer{background:var(--paper);padding:56px 0 28px;font-size:.88rem}.fcols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}.fcols h4{font-weight:600;font-size:.85rem;margin-bottom:14px}.fcols a{display:block;color:var(--mut);padding:4px 0}.fcols a:hover{color:var(--ink)}
+.fb{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:960px){nav,.top{display:none}.hero .wrap,.feature .wrap{grid-template-columns:1fr}.hero svg{display:none}.hero .wrap{min-height:0;padding-block:56px}.promo,.grid4,.roles,.trust .cols,.steps{grid-template-columns:1fr 1fr}.fcols{grid-template-columns:1fr 1fr}section{padding:56px 0}.sp{flex:1}.signin{margin-right:-32px}}
+@media(max-width:560px){.promo,.grid4,.roles,.trust .cols,.steps{grid-template-columns:1fr}.btn{min-width:0;width:100%}.wrap{padding:0 20px}.signin{margin-right:-20px}}
+
+/* motion */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}.w>span{display:inline-block;transform:translateY(112%);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*80ms + 120ms)}
+@keyframes up{to{transform:none}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes sway{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(13deg)}}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes blink{50%{opacity:.3}}@keyframes march{to{stroke-dashoffset:-22}}
+.spin{transform-origin:220px 200px;animation:spin 70s linear infinite}.needle{transform-origin:220px 200px;animation:sway 7s ease-in-out infinite}
+.chip{opacity:0;animation:pop .7s ease forwards;animation-delay:var(--t)}.blink{animation:blink 1.8s infinite}.march{animation:march 1.4s linear infinite}
+.ticker{margin-top:34px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid #2C4A6E;padding:12px 16px;max-width:31em;font-size:.88rem;color:#B9C3D2}
+.ticker b{color:#F4EFE6;font-weight:500}.ticker .ex{font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:#8CA0BA}.dot{width:8px;height:8px;border-radius:50%;background:#7FC3A0;animation:blink 1.6s infinite}
+#tk-st{color:#E8DFD1;transition:color .3s}#tk-st.done{color:#7FC3A0}.ticker .bar{flex-basis:100%;height:3px;background:#1D3A5C}.ticker .bar i{display:block;height:100%;width:0;background:#7FC3A0;transition:width .7s ease}
+.statband{background:var(--paper);border-bottom:1px solid var(--line)}.statband .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.st{padding:30px 24px 30px 0;border-left:1px solid var(--line);padding-left:24px}.st:first-child{border-left:0;padding-left:0}.st b{display:block;font-size:2.8rem;font-weight:300;line-height:1;color:var(--link)}.st span{color:var(--mut);font-size:.9rem}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}.rv.in{opacity:1;transform:none}
+.tile,.promo a,.roles>div{transition:background .15s,transform .25s ease,box-shadow .25s ease}.tile:hover,.roles>div:hover{transform:translateY(-4px);box-shadow:0 14px 28px -18px rgba(11,31,58,.5)}
+.arr{transition:transform .25s ease}.tile:hover .arr,.promo a:hover .arr{transform:translateX(6px)}.btn span{transition:transform .2s}.btn:hover span{transform:translateX(5px)}
+.steps li{transition:background .2s}.steps li:hover b{color:var(--ink)}.steps b{transition:color .2s}
+header{transition:box-shadow .2s}header.scrolled{box-shadow:0 6px 18px -12px rgba(11,31,58,.5)}
+.cta2{position:relative;overflow:hidden}.cta2 .rings{position:absolute;right:-120px;top:50%;width:520px;margin-top:-260px;opacity:.16;animation:spin 90s linear infinite}
+@media(max-width:960px){.statband .wrap{grid-template-columns:1fr 1fr}.st:nth-child(3){border-left:0;padding-left:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.w>span{transform:none}.chip{opacity:1}.rv{opacity:1;transform:none}animateMotion{display:none}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><span>Corporate Travel &amp; Reimbursement</span><a href="#roles">For employees, managers, finance and admins</a></div></div>
+<header><div class="wrap">
+  <a class="logo" href="#top"><svg width="26" height="26" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="2.4"/><path d="M20 6l5 14-5 14-5-14z" fill="currentColor"/></svg>MERIDIAN</a>
+  <nav><a href="#capabilities">Capabilities</a><a href="#policy">Policy</a><a href="#workflow">Workflow</a><a href="#roles">Roles</a><a href="#trust">Governance</a></nav>
+  <span class="sp"></span><a class="signup" data-app="/login?mode=signup" href="#">Sign up</a><a class="signin" data-app href="#">Sign in</a>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <div><span class="eyebrow" style="color:#8CA0BA">Travel and expense management</span>
+    <h1>Every journey approved. Every expense accounted for.</h1>
+    <p>One governed workflow for travel requests, approvals, expense claims and reimbursements, with policy checks built in and a clear record of every decision.</p>
+    <div class="cta"><a class="btn" data-app href="#">Sign in to Meridian <span>→</span></a><a class="btn alt" data-app="/login?mode=signup" href="#">Create an account <span>→</span></a></div><div class="ticker" aria-live="off"><span class="dot"></span><span class="ex">Example</span><b>TR-1042 · Bangalore</b><span id="tk-st">Request submitted</span><div class="bar"><i></i></div></div>
+  </div>
+  <svg viewBox="0 0 440 400" fill="none" role="img" aria-label="Illustration of a travel approval route">
+    <g class="spin" stroke="#2C4A6E" stroke-width="1"><circle cx="220" cy="200" r="170" stroke-dasharray="2 6"/><circle cx="220" cy="200" r="120"/><circle cx="220" cy="200" r="70"/><path d="M220 20v360M40 200h360M92 72l256 256M348 72L92 328"/></g>
+    <g class="needle"><path d="M220 62l26 138-26 138-26-138z" fill="#E8DFD1" opacity=".92"/><path d="M220 62v276" stroke="#0B1F3A" stroke-width="2"/></g>
+    <path class="march" d="M178 115 C 270 110, 310 150, 262 199 S 140 270, 198 301" stroke="#8CA0BA" stroke-width="1.5" stroke-dasharray="5 6"/>
+    <circle r="5" fill="#7FC3A0"><animateMotion dur="6s" repeatCount="indefinite" path="M178 115 C 270 110, 310 150, 262 199 S 140 270, 198 301"/></circle>
+    <g font-family="IBM Plex Sans,sans-serif" font-size="12">
+      <g class="chip" style="--t:.9s"><rect x="28" y="96" width="150" height="38" fill="#FAF9F6"/><text x="42" y="120" fill="#172033">Request submitted</text><circle cx="168" cy="115" r="5" fill="#2F6B4F"/></g>
+      <g class="chip" style="--t:1.7s"><rect x="262" y="180" width="150" height="38" fill="#FAF9F6"/><text x="276" y="204" fill="#172033">Manager approved</text><circle cx="402" cy="199" r="5" fill="#2F6B4F"/></g>
+      <g class="chip" style="--t:2.5s"><rect x="48" y="282" width="150" height="38" fill="#FAF9F6"/><text x="62" y="306" fill="#172033">Policy check</text><circle class="blink" cx="188" cy="301" r="5" fill="#C58A1B"/></g>
+    </g>
+  </svg>
+</div></div>
+
+<div class="promo">
+  <a data-app href="#"><small>For employees</small><h3>Start a travel request and track it to approval</h3><span class="arr">→</span></a>
+  <a data-app href="#"><small>For managers</small><h3>Review requests and claims with flags and receipts</h3><span class="arr">→</span></a>
+  <a data-app href="#"><small>For finance</small><h3>Approve reimbursements and record payment</h3><span class="arr">→</span></a>
+</div>
+
+<div class="statband"><div class="wrap">
+  <div class="st"><b data-count="4">4</b><span>roles, one sign-in</span></div><div class="st"><b data-count="8">8</b><span>stages from request to payment</span></div>
+  <div class="st"><b data-count="4">4</b><span>automatic policy checks</span></div><div class="st"><b data-count="7">7</b><span>expense categories</span></div></div></div>
+
+<section id="capabilities"><div class="wrap">
+  <span class="eyebrow">Platform</span><h2>The capabilities behind every trip</h2>
+  <p class="lead">Everything from the first request to the final payment runs in one system, so no one has to chase a status.</p>
+  <div class="grid4">
+    <div class="tile"><h3>Travel requests</h3><p>Submit trips with dates, cost estimates and a project code, or save a draft.</p><span class="arr">→</span></div>
+    <div class="tile"><h3>Approval workflow</h3><p>Managers approve, reject or return a request, with a required comment.</p><span class="arr">→</span></div>
+    <div class="tile"><h3>Expense claims</h3><p>Add itemised expenses to an approved trip across seven categories.</p><span class="arr">→</span></div>
+    <div class="tile"><h3>Receipt management</h3><p>Attach PDF, JPG or PNG proof to the exact expense it supports.</p><span class="arr">→</span></div>
+    <div class="tile"><h3>Policy validation</h3><p>Automatic checks flag missing receipts, limits and date mismatches.</p><span class="arr">→</span></div>
+    <div class="tile"><h3>Reimbursements</h3><p>Finance approves, then records payment date and reference.</p><span class="arr">→</span></div>
+    <div class="tile"><h3>Reports and analytics</h3><p>Monthly spend, departments, categories and approval turnaround.</p><span class="arr">→</span></div>
+    <div class="tile"><h3>Notifications</h3><p>In-app alerts, and email when your team connects SMTP.</p><span class="arr">→</span></div>
+  </div>
+</div></section>
+
+<section id="policy" class="feature"><div class="wrap">
+  <div><span class="eyebrow">Policy automation</span><h2>Policy is checked before a person has to.</h2>
+    <p>The moment a claim is submitted, every expense is tested against your rules. Reviewers see clear flags instead of doing the arithmetic themselves.</p>
+    <a class="btn" data-app href="#">Sign in to Meridian <span>→</span></a></div>
+  <div class="checks" aria-label="Example policy results">
+    <div>Flight · ₹12,400<span class="g">Compliant</span></div><div>Hotel · ₹7,200<span>Above policy limit</span></div>
+    <div>Food · ₹1,100<span>Receipt required</span></div><div>Conference · ₹9,000<span>Outside trip period</span></div>
+  </div>
+</div></section>
+
+<section id="workflow"><div class="wrap">
+  <span class="eyebrow">Workflow</span><h2>From request to reimbursement in eight stages</h2>
+  <p class="lead">Each stage has a clear owner, and that owner is notified when it's their turn.</p>
+  <div class="steps"><ol>
+    <li><b>01</b><h4>Submit request</h4><p>Employee sends destination, dates and estimated cost.</p></li>
+    <li><b>02</b><h4>Manager review</h4><p>Approve, reject, or return with a comment.</p></li>
+    <li><b>03</b><h4>Trip approved</h4><p>The trip is cleared to go ahead.</p></li>
+    <li><b>04</b><h4>Trip completed</h4><p>Employee closes out the trip.</p></li>
+    <li><b>05</b><h4>Claim with receipts</h4><p>Expenses added and receipts uploaded.</p></li>
+    <li><b>06</b><h4>Policy validation</h4><p>Limits, dates and receipts checked automatically.</p></li>
+    <li><b>07</b><h4>Finance review</h4><p>Finance inspects the claim and approves payment.</p></li>
+    <li><b>08</b><h4>Paid</h4><p>Reference recorded and employee notified.</p></li>
+  </ol></div>
+</div></section>
+
+<section id="roles" style="padding-top:0"><div class="wrap">
+  <span class="eyebrow">Roles</span><h2>One sign-in, the right workspace for every role</h2>
+  <div class="roles">
+    <div><h3>Employees</h3><ul><li>Create and save travel requests</li><li>Track approval status</li><li>Submit expenses and receipts</li><li>View reimbursement status</li></ul></div>
+    <div><h3>Managers</h3><ul><li>Review team travel requests</li><li>Approve, reject or return</li><li>Review expense claims</li><li>Follow team spending</li></ul></div>
+    <div><h3>Finance</h3><ul><li>Review policy flags and receipts</li><li>Approve reimbursements</li><li>Record payment references</li><li>Report on spend</li></ul></div>
+    <div><h3>Administrators</h3><ul><li>Manage users and roles</li><li>Set policies and limits</li><li>View all requests and claims</li><li>Deactivate access</li></ul></div>
+  </div>
+</div></section>
+
+<section id="trust" class="trust"><div class="wrap">
+  <span class="eyebrow">Governance</span><h2>Control and visibility built in</h2>
+  <div class="cols">
+    <div><h3>Role-based access</h3><p>Permissions are enforced on the server, so changing a URL never opens another role's pages.</p></div>
+    <div><h3>Complete audit trail</h3><p>Every approval, rejection and payment is recorded with who, what, when and why.</p></div>
+    <div><h3>Reporting that answers questions</h3><p>Total spend, reimbursements, department and category breakdowns, and approval turnaround.</p></div>
+  </div>
+</div></section>
+
+<div class="cta2"><svg class="rings" viewBox="0 0 100 100" fill="none" stroke="#F4EFE6" aria-hidden="true"><circle cx="50" cy="50" r="46" stroke-width=".4"/><circle cx="50" cy="50" r="34" stroke-width=".4" stroke-dasharray="1 2"/><circle cx="50" cy="50" r="22" stroke-width=".4"/><path d="M50 4v92M4 50h92" stroke-width=".3"/><path d="M50 12l7 38-7 38-7-38z" fill="#F4EFE6" stroke="none" opacity=".5"/></svg><div class="wrap" style="padding-block:64px;position:relative"><h2>Give every trip a clear route.</h2>
+  <div class="cta"><a class="btn sand" data-app href="#">Sign in to Meridian <span>→</span></a><a class="btn alt" href="#capabilities">Explore capabilities <span>→</span></a></div></div></div>
+</main>
+
+<footer><div class="wrap">
+  <div class="fcols">
+    <div><a class="logo" href="#top" style="margin:0 0 12px;padding:0">MERIDIAN</a><span style="color:var(--mut)">Corporate Travel &amp; Reimbursement</span></div>
+    <div><h4>Platform</h4><a href="#capabilities">Travel requests</a><a href="#capabilities">Expense claims</a><a href="#capabilities">Reimbursements</a><a href="#capabilities">Reports</a></div>
+    <div><h4>Roles</h4><a href="#roles">Employees</a><a href="#roles">Managers</a><a href="#roles">Finance</a><a href="#roles">Administrators</a></div>
+    <div><h4>Governance</h4><a href="#policy">Policy validation</a><a href="#trust">Access control</a><a href="#trust">Audit trail</a></div>
+  </div>
+  <div class="fb"><span>© Meridian</span><span>Simplify every journey. Track every expense.</span></div>
+</div></footer>
+
+<script>
+// Buttons marked data-app ask the React app to navigate (the landing page runs inside an iframe).
+document.querySelectorAll("[data-app]").forEach(function(a){a.href="#";a.addEventListener("click",function(e){e.preventDefault();parent.postMessage({ meridianGo: a.getAttribute("data-app") || "/login" },"*")})});
+
+var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+var h1 = document.querySelector(".hero h1");
+if (!reduce) h1.innerHTML = h1.textContent.trim().split(/\s+/).map(function(w,i){return '<span class="w" style="--i:'+i+'"><span>'+w+'</span></span>'}).join(" ");
+var counted = function(el){var to=+el.getAttribute("data-count"),t0=performance.now();(function f(n){var p=Math.min((n-t0)/1200,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)};
+if (!reduce && "IntersectionObserver" in window) {
+  document.querySelectorAll("[data-count]").forEach(function(el){el.textContent="0"});
+  var io = new IntersectionObserver(function(es){es.forEach(function(e){ if(!e.isIntersecting) return; var t=e.target; t.classList.add("in"); io.unobserve(t);
+    setTimeout(function(){t.style.setProperty("--d","0s")},1800); var c=t.querySelector("[data-count]"); if(c) counted(c); });},{threshold:.15});
+  document.querySelectorAll(".promo a,section .eyebrow,section h2,section .lead,.tile,.steps li,.roles>div,.trust .cols>div,.checks div,.feature .btn,.st,.cta2 h2,.cta2 .cta").forEach(function(el){
+    el.style.setProperty("--d",(Array.prototype.indexOf.call(el.parentNode.children,el)%4)*0.09+"s"); el.classList.add("rv"); io.observe(el); });
+}
+var stages=["Request submitted","Manager approved","Trip completed","Claim submitted","Policy checked","Finance approved","Paid"],n=0,tk=document.getElementById("tk-st"),bar=document.querySelector(".ticker .bar i");
+function step(){tk.textContent=stages[n];bar.style.width=((n+1)/stages.length*100)+"%";tk.className=n===stages.length-1?"done":"";n=(n+1)%stages.length}
+step(); if(!reduce) setInterval(step,1800);
+addEventListener("scroll",function(){document.querySelector("header").classList.toggle("scrolled",scrollY>8)},{passive:true});
+</script>
+</body>
+</html>

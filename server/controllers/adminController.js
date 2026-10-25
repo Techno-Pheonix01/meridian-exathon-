@@ -1,0 +1,11 @@
+import { Router } from "express"; import jwt from "jsonwebtoken"; import bcrypt from "bcryptjs";
+import { User, TravelRequest as TR, ExpenseClaim as EC, Policy, Notification } from "../models/index.js";
+import { auth } from "../middleware/auth.js"; import { role } from "../middleware/role.js"; import { upload, storeReceipt } from "../middleware/upload.js";
+import { wrap, code, inr, scope, total } from "../utils/helpers.js"; import { notify, notifyRole } from "../utils/notificationService.js"; import { checkPolicy } from "../utils/policyChecker.js";
+const app = Router();
+app.get("/api/users", auth, role("admin"), wrap(async (_, res) => res.json(await User.find().select("-password").populate("managerId", "name"))));
+app.post("/api/users", auth, role("admin"), wrap(async (req, res) => { const b = req.body; res.json(await User.create({ ...b, managerId: b.managerId || undefined, password: await bcrypt.hash(b.password || "demo123", 10) })); }));
+app.put("/api/users/:id", auth, role("admin"), wrap(async (req, res) => { const { password, ...b } = req.body; if (!b.managerId) delete b.managerId; await User.findByIdAndUpdate(req.params.id, b); res.json(await User.findById(req.params.id).select("-password")); }));
+app.get("/api/policies", auth, wrap(async (_, res) => res.json(await Policy.find())));
+app.put("/api/policies/:id", auth, role("admin"), wrap(async (req, res) => res.json(await Policy.findByIdAndUpdate(req.params.id, req.body, { new: true }))));
+export default app;
