@@ -1,23 +1,24 @@
 # Meridian
-Prereq: Node 18+, MongoDB running locally.
+Prereq: Node 18+, and a MongoDB (local, or a free MongoDB Atlas cluster).
 ```
-cd server && cp .env.example .env && npm i && npm run seed && npm start      # API :5000
-cd client && npm i && npm run dev                    # UI  :5173
+cd server && cp .env.example .env     # then open .env and fill MONGO_URI and JWT_SECRET
+npm i && npm start                    # API on :5000
+cd client && npm i && npm run dev     # UI on :5173 (Vite forwards /api to :5000)
 ```
-Demo logins (password `demo123`): employee@ / manager@ / finance@ / admin@company.com
+Sign-in is email + password only. Create an account on the Sign Up page.
+
+## Deploying (Render + Vercel + MongoDB Atlas)
+- Every backend route starts with `/api` (e.g. `POST /api/auth/register`). The frontend adds `/api` itself, so on Vercel set
+  `VITE_API_URL` to the bare Render address, e.g. `https://meridian-5g9v.onrender.com` (no trailing slash, no `/api`).
+- Render: Root Directory `server`, Build `npm install`, Start `npm start`. Environment: see `server/.env.example`.
+- Vercel: Root Directory `client`, Framework Vite, Build `npm run build`, Output `dist`. `client/vercel.json` already handles page refreshes.
+- Open `https://<your-render-url>/` in a browser: it should show `{"app":"Meridian API","status":"running","database":"connected"}`.
+
+## Demo accounts
+Set `SEED_DEMO_USERS=true` on the server to create employee@ / manager@ / finance@ / admin@company.com (password `demo123`) on startup.
+These are sample accounts for demonstrations only. Or run `cd server && npm run demo-users` against your database.
 
 Optional: fill Cloudinary / SMTP values in server/.env for cloud receipts and email notifications; otherwise local uploads + in-app only.
-
-## Google & LinkedIn sign-in
-Set in `server/.env` (see `.env.example`): `APP_URL`, `GOOGLE_CLIENT_ID/SECRET`, `LINKEDIN_CLIENT_ID/SECRET`.
-Register these redirect URLs with each provider (replace the origin in production):
-- `http://localhost:5173/api/auth/oauth/google/callback`
-- `http://localhost:5173/api/auth/oauth/linkedin/callback`
-LinkedIn: add the product "Sign In with LinkedIn using OpenID Connect". Anyone with a Google or LinkedIn account can sign in; first sign-in creates an employee account automatically.
-Set `OAUTH_AUTO_CREATE=false` to require admin-created accounts, or `OAUTH_ALLOWED_DOMAIN=yourcompany.com` to limit sign-up to one domain.
-New users have no manager: an admin assigns one under Users, otherwise their travel requests have no approver.
-
-Full Google/LinkedIn setup walkthrough: docs/OAUTH_SETUP.md
 
 ## Bill / receipt verification
 - **On submit (automatic):** file type is checked from the file contents (real PDF/JPG/PNG only); bill amount, bill date and GSTIN format are compared with the claim; the same vendor + invoice number, or the same receipt file, used in any other claim is flagged ("Duplicate Bill", "Receipt Already Used"); same category/amount/date by the same employee is flagged "Possible Duplicate".
@@ -34,5 +35,5 @@ Full Google/LinkedIn setup walkthrough: docs/OAUTH_SETUP.md
 Accounts made on the Sign Up page are employees. To view the other roles:
 - `cd server && npm run demo-users` creates (or repairs) manager@, finance@, admin@ and employee@company.com (password `demo123`). It deletes nothing.
 - `npm run set-role -- you@example.com manager` turns an existing account into a manager, finance or admin user (roles: employee, manager, finance, admin). Run it with no arguments to list all accounts.
-- Or set `SIGNUP_ROLE_CHOICE=true` in `server/.env` (testing only) to get a Role dropdown on the sign-up form, then restart the server.
+- Or, on your own computer only, set `SIGNUP_ROLE_CHOICE=true` in `server/.env` (and not NODE_ENV=production) to get a Role dropdown on the sign-up form.
 (`npm run seed` also creates the demo accounts, but it first wipes users, policies and travel requests.)
